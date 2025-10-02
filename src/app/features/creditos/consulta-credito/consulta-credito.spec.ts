@@ -1,23 +1,26 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { App } from '../../../app';
+import { routes } from '../../../app.routes';
 
-import { ConsultaCredito } from './consulta-credito';
-
-describe('ConsultaCredito', () => {
-  let component: ConsultaCredito;
-  let fixture: ComponentFixture<ConsultaCredito>;
-
+describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ConsultaCredito]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(ConsultaCredito);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+      imports: [App],
+      providers: [provideRouter(routes)]
+    }).compileComponents();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('deve criar o app', () => {
+    const fixture = TestBed.createComponent(App);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it('deve renderizar o router-outlet', () => {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('router-outlet')).toBeTruthy();
   });
 });

@@ -52,67 +52,52 @@
         <div class="resultados">
           <h3>Resultados da Consulta</h3>
           <div class="table-container">
-            @if (creditos().length == 0) {
-              <table class="creditos-table">
-                <span>Não foram encontrados resultados para a consulta.</span>
-              </table>
-            }
             <table mat-table [dataSource]="creditos()" class="creditos-table">
-              <!-- Coluna Número do Crédito -->
               <ng-container matColumnDef="numeroCredito">
                 <th mat-header-cell *matHeaderCellDef>Nº Crédito</th>
                 <td mat-cell *matCellDef="let credito">{{ credito.numeroCredito }}</td>
               </ng-container>
 
-              <!-- Coluna Número da NFS-e -->
               <ng-container matColumnDef="numeroNfse">
                 <th mat-header-cell *matHeaderCellDef>Nº NFS-e</th>
                 <td mat-cell *matCellDef="let credito">{{ credito.numeroNfse }}</td>
               </ng-container>
 
-              <!-- Coluna Data de Constituição -->
               <ng-container matColumnDef="dataConstituicao">
                 <th mat-header-cell *matHeaderCellDef>Data Constituição</th>
                 <td mat-cell *matCellDef="let credito">{{ formatarData(credito.dataConstituicao) }}</td>
               </ng-container>
 
-              <!-- Coluna Valor ISSQN -->
               <ng-container matColumnDef="valorIssqn">
                 <th mat-header-cell *matHeaderCellDef>Valor ISSQN</th>
                 <td mat-cell *matCellDef="let credito">{{ formatarMoeda(credito.valorIssqn) }}</td>
               </ng-container>
 
-              <!-- Coluna Tipo de Crédito -->
               <ng-container matColumnDef="tipoCredito">
                 <th mat-header-cell *matHeaderCellDef>Tipo Crédito</th>
                 <td mat-cell *matCellDef="let credito">{{ credito.tipoCredito }}</td>
               </ng-container>
 
-              <!-- Coluna Simples Nacional -->
               <ng-container matColumnDef="simplesNacional">
                 <th mat-header-cell *matHeaderCellDef>Simples Nacional</th>
                 <td mat-cell *matCellDef="let credito">{{ credito.simplesNacional }}</td>
               </ng-container>
 
-              <!-- Coluna Alíquota -->
               <ng-container matColumnDef="aliquota">
                 <th mat-header-cell *matHeaderCellDef>Alíquota</th>
                 <td mat-cell *matCellDef="let credito">{{ formatarPorcentagem(credito.aliquota) }}</td>
               </ng-container>
 
-              <!-- Coluna Valor Faturado -->
               <ng-container matColumnDef="valorFaturado">
                 <th mat-header-cell *matHeaderCellDef>Valor Faturado</th>
                 <td mat-cell *matCellDef="let credito">{{ formatarMoeda(credito.valorFaturado) }}</td>
               </ng-container>
 
-              <!-- Coluna Valor Dedução -->
               <ng-container matColumnDef="valorDeducao">
                 <th mat-header-cell *matHeaderCellDef>Valor Dedução</th>
                 <td mat-cell *matCellDef="let credito">{{ formatarMoeda(credito.valorDeducao) }}</td>
               </ng-container>
 
-              <!-- Coluna Base de Cálculo -->
               <ng-container matColumnDef="baseCalculo">
                 <th mat-header-cell *matHeaderCellDef>Base Cálculo</th>
                 <td mat-cell *matCellDef="let credito">{{ formatarMoeda(credito.baseCalculo) }}</td>
@@ -123,7 +108,7 @@
             </table>
           </div>
 
-          <!-- Versão Mobile com Cards -->
+          <!-- mobile -->
           <div class="mobile-cards">
             @for (credito of creditos(); track credito.numeroCredito) {
               <mat-card class="credito-card">
