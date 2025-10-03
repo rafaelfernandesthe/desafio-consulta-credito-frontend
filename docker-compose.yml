@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  frontend:
+    build: ./
+    container_name: frontend_app
+    ports:
+      - "4200:80"
+    networks:
+      - consultacredito-net
+
+networks:
+  consultacredito-net:
